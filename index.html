@@ -21,6 +21,16 @@
 
         }
 
+        function playRound(playerSelection,computerSelection) {
+            playerChoice = playerSelection.toLowerCase();
+            if ((playerChoice === "rock" && computerSelection === "scissors") || (playerChoice === "paper" && computerSelection === "rock") || (playerChoice === "scissors" && computerSelection === "paper") ) {
+                return `You Win! ${playerChoice} beats ${computerSelection}`
+            } else if ((computerSelection === "rock" && playerChoice === "scissors") || (computerSelection === "paper" && playerChoice === "rock") || (computerSelection === "scissors" && playerChoice === "paper") ) {
+                return `You Lose! ${computerSelection} beats ${playerChoice}`
+            } else {
+                return "It was a tie!"
+            }
+        }
 
     </script>
 </body>
