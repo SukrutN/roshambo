@@ -7,7 +7,15 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h3>Make a choice!</h3>
+    <div>
+    <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissors">scissors</button>
+    </div>
+    <div id="results" style="margin-top: 20px;">Results...</div>
     <script>
+
         function getComputerChoice() {
             randomval = Math.floor(Math.random() * 3) + 1;  
 
@@ -24,23 +32,36 @@
         function playRound(playerSelection,computerSelection) {
             playerChoice = playerSelection.toLowerCase();
             if ((playerChoice === "rock" && computerSelection === "scissors") || (playerChoice === "paper" && computerSelection === "rock") || (playerChoice === "scissors" && computerSelection === "paper") ) {
-                return `You Win! ${playerChoice} beats ${computerSelection}`
+                return `You Win! ${playerChoice} beats ${computerSelection}`;
             } else if ((computerSelection === "rock" && playerChoice === "scissors") || (computerSelection === "paper" && playerChoice === "rock") || (computerSelection === "scissors" && playerChoice === "paper") ) {
-                return `You Lose! ${computerSelection} beats ${playerChoice}`
+                return `You Lose! ${computerSelection} beats ${playerChoice}`;
             } else {
-                return "It was a tie!"
+                return "It was a tie!";
             }
         }
 
-        function game() {
-            for (let i = 0; i < 5; i++){
-                playerSelection = prompt("Rock, Paper, or Scissors?")
-                computerSelection = getComputerChoice()
-                console.log(playRound(playerSelection,computerSelection))
-            }
-        }
+        const rock = document.querySelector("#rock");
+        const paper = document.querySelector("#paper");
+        const scissors = document.querySelector("#scissors");
+        const results = document.querySelector("#results");
+        let outcome = "";
 
-        game()
+        rock.addEventListener("click", () => {
+            outcome = playRound("rock",getComputerChoice())
+            document.getElementById("results").innerHTML = outcome;
+        })
+
+        paper.addEventListener("click", () => {
+            outcome = playRound("paper",getComputerChoice())
+            document.getElementById("results").innerHTML = outcome;
+        })
+
+        scissors.addEventListener("click", () => {
+            outcome = playRound("scissors",getComputerChoice())
+            document.getElementById("results").innerHTML = outcome;
+        })
+        
+
     </script>
 </body>
 </html>
